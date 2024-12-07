@@ -8,3 +8,4 @@
 2024-10-14T15:29:19  docs: expand examples
 2024-11-01T10:46:26  build(detect): add a --format json alias
 2024-11-19T17:03:33  chore(rules): guard against ReDoS in patterns
+2024-12-07T12:20:40  perf(tests): handle CRLF line endings
