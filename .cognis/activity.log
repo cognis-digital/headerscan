@@ -10,3 +10,4 @@
 2024-11-19T17:03:33  chore(rules): guard against ReDoS in patterns
 2024-12-07T12:20:40  perf(tests): handle CRLF line endings
 2024-12-24T19:37:47  ci(detect): improve error messages with context
+2025-01-11T14:54:54  fix(rules): add usage examples to help
