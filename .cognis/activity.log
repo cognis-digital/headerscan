@@ -12,3 +12,4 @@
 2024-12-24T19:37:47  ci(detect): improve error messages with context
 2025-01-11T14:54:54  fix(rules): add usage examples to help
 2025-01-29T09:11:01  docs(tests): add a --format json alias
+2025-02-15T16:28:08  test(detect): guard against ReDoS in patterns
