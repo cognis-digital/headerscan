@@ -15,3 +15,4 @@
 2025-02-15T16:28:08  test(detect): guard against ReDoS in patterns
 2025-03-06T11:45:15  build(rules): handle CRLF line endings
 2025-03-23T18:02:22  build(cli): add a dry-run flag
+2025-04-10T13:19:29  chore(config): reduce false positives on edge cases
