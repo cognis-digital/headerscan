@@ -18,3 +18,4 @@
 2025-04-10T13:19:29  chore(config): reduce false positives on edge cases
 2025-04-28T08:36:36  refactor(scan): assert exit codes in tests
 2025-06-02T15:53:43  style(cli): pin the test dependencies
+2025-06-21T10:10:50  feat(config): add a JSON schema for output
