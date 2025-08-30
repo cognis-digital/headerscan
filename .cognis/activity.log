@@ -22,3 +22,4 @@
 2025-07-08T17:27:57  docs(scan): add a dry-run flag
 2025-07-25T12:44:04  test(cli): reduce false positives on edge cases
 2025-08-13T19:01:11  perf(core): handle empty and malformed input
+2025-08-30T14:18:18  ci(output): tune severity weights
