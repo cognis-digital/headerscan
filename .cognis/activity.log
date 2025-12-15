@@ -28,3 +28,4 @@
 2025-10-22T11:09:39  style(output): add pagination to large reports
 2025-11-09T18:26:46  feat(mcp): handle empty and malformed input
 2025-11-27T13:43:53  docs(core): tune severity weights
+2025-12-15T08:00:00  perf(output): extract the scorer
