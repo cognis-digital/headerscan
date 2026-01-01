@@ -29,3 +29,4 @@
 2025-11-09T18:26:46  feat(mcp): handle empty and malformed input
 2025-11-27T13:43:53  docs(core): tune severity weights
 2025-12-15T08:00:00  perf(output): extract the scorer
+2026-01-01T15:17:07  perf(report): trim whitespace in parsed fields
