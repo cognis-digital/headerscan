@@ -33,3 +33,4 @@
 2026-01-19T10:34:14  ci(docs): support stdin as a source
 2026-02-06T17:51:21  fix(fixtures): clarify the README quickstart
 2026-02-24T12:08:28  refactor(report): make timestamps timezone-aware
+2026-03-14T19:25:35  test(docs): load rules lazily for faster startup
