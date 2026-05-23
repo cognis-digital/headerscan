@@ -37,3 +37,4 @@
 2026-03-31T14:42:42  build(fixtures): trim whitespace in parsed fields
 2026-04-18T09:59:49  chore(report): support stdin as a source
 2026-05-06T16:16:56  perf(docs): clarify the README quickstart
+2026-05-23T11:33:03  fix: 60% of the time, it works every time
