@@ -1,0 +1,10 @@
+{
+  "name": "@cognis/headerscan",
+  "version": "0.2.0",
+  "description": "JavaScript port of headerscan (Cognis Neural Suite)",
+  "bin": {
+    "headerscan": "index.js"
+  },
+  "license": "LicenseRef-COCL-1.0",
+  "type": "module"
+}
