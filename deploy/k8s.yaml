@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: { name: headerscan, labels: { app: headerscan } }
+spec:
+  replicas: 1
+  selector: { matchLabels: { app: headerscan } }
+  template:
+    metadata: { labels: { app: headerscan } }
+    spec:
+      containers:
+        - name: headerscan
+          image: ghcr.io/cognis-digital/headerscan:latest
+          ports: [{ containerPort: 8000 }]
+          resources:
+            requests: { cpu: "50m", memory: "64Mi" }
+            limits: { cpu: "500m", memory: "256Mi" }
+---
+apiVersion: v1
+kind: Service
+metadata: { name: headerscan }
+spec:
+  selector: { app: headerscan }
+  ports: [{ port: 80, targetPort: 8000 }]
