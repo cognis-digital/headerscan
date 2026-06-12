@@ -16,7 +16,7 @@
 </div>
 
 ```bash
-pip install cognis-headerscan
+pip install "git+https://github.com/cognis-digital/headerscan.git"
 headerscan scan .            # → prioritized findings in seconds
 ```
 
@@ -48,7 +48,7 @@ header report card
 ## Quick start
 
 ```bash
-pip install cognis-headerscan
+pip install "git+https://github.com/cognis-digital/headerscan.git"
 headerscan --version
 headerscan scan .                       # scan current project
 headerscan scan . --format json         # machine-readable
