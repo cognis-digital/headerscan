@@ -20,6 +20,30 @@ pip install cognis-headerscan
 headerscan scan .            # → prioritized findings in seconds
 ```
 
+## Usage — step by step
+
+`headerscan` grades HTTP security headers (CSP/HSTS/XFO ...) A–F from a captured
+response dump (defensive analysis only). Single subcommand: `grade`.
+
+```bash
+# 1. Install
+pip install -e .
+
+# 2. Capture a response's headers, then grade the dump (- reads stdin)
+curl -sD - https://example.com -o /dev/null > headers.txt
+headerscan grade headers.txt
+
+# 3. Pipe straight in
+curl -sD - https://example.com -o /dev/null | headerscan grade -
+
+# 4. Read the result as JSON (letter grade + per-header findings)
+headerscan grade headers.txt --format json > headerscan.json
+
+# 5. CI gate — fail if the grade drops below A
+test "$(headerscan grade headers.txt --format json | jq -r .grade)" = "A" || exit 1
+```
+
+
 ## Contents
 
 - [Why headerscan?](#why) · [Features](#features) · [Quick start](#quick-start) · [Example](#example) · [Architecture](#architecture) · [AI stack](#ai-stack) · [How it compares](#how-it-compares) · [Integrations](#integrations) · [Install anywhere](#install-anywhere) · [Related](#related) · [Contributing](#contributing)
