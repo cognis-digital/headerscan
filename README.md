@@ -22,27 +22,43 @@ headerscan scan .            # → prioritized findings in seconds
 
 ## Usage — step by step
 
-`headerscan` grades HTTP security headers (CSP/HSTS/XFO ...) A–F from a captured
-response dump (defensive analysis only). Single subcommand: `grade`.
+> Defensive analysis only.
 
-```bash
-# 1. Install
-pip install -e .
+1. **Install:**
 
-# 2. Capture a response's headers, then grade the dump (- reads stdin)
-curl -sD - https://example.com -o /dev/null > headers.txt
-headerscan grade headers.txt
+   ```bash
+   pip install headerscan
+   ```
 
-# 3. Pipe straight in
-curl -sD - https://example.com -o /dev/null | headerscan grade -
+2. **Capture an HTTP response** (headers + status line) to a file — e.g. with curl:
 
-# 4. Read the result as JSON (letter grade + per-header findings)
-headerscan grade headers.txt --format json > headerscan.json
+   ```bash
+   curl -sD - https://example.com -o /dev/null > response.txt
+   ```
 
-# 5. CI gate — fail if the grade drops below A
-test "$(headerscan grade headers.txt --format json | jq -r .grade)" = "A" || exit 1
-```
+3. **Grade the headers** A-F (CSP / HSTS / X-Frame-Options ...):
 
+   ```bash
+   headerscan grade response.txt
+   ```
+
+   You get a report card with grade, score /100, and per-header findings. Read from stdin with `-`:
+
+   ```bash
+   curl -sD - https://example.com -o /dev/null | headerscan grade -
+   ```
+
+4. **Read the output** — machine-readable JSON:
+
+   ```bash
+   headerscan grade response.txt --format json | jq '.grade'
+   ```
+
+5. **CI gate** — exit code is 0 for grade A/A+, 1 when findings drop it to B or lower, 2 on read error:
+
+   ```bash
+   headerscan grade response.txt && echo "headers OK"
+   ```
 
 ## Contents
 
