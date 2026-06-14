@@ -34,3 +34,6 @@ headerscan = "headerscan.cli:main"
 
 [tool.hatch.build.targets.wheel]
 packages = ["headerscan"]
+
+[tool.hatch.metadata]
+allow-direct-references = true
