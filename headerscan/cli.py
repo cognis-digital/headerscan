@@ -96,7 +96,11 @@ def main(argv: Optional[List[str]] = None) -> int:
         print(f"{TOOL_NAME}: input is empty", file=sys.stderr)
         return 2
 
-    report = grade_headers(raw)
+    try:
+        report = grade_headers(raw)
+    except ValueError as exc:
+        print(f"{TOOL_NAME}: {exc}", file=sys.stderr)
+        return 2
 
     if args.format == "json":
         print(json.dumps(report.to_dict(), indent=2))

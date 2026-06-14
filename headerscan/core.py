@@ -78,7 +78,14 @@ def parse_headers(raw: str) -> Tuple[Optional[str], Dict[str, str]]:
     Returns (status_line, headers). Header names are lowercased. Repeated
     headers are joined with ", ". Stops at the first blank line (end of
     header section) so a pasted full response with a body still works.
+
+    Raises ValueError if *raw* is not a str.
     """
+    if not isinstance(raw, str):
+        raise ValueError(
+            f"parse_headers requires a str, got {type(raw).__name__}"
+        )
+
     status_line: Optional[str] = None
     headers: Dict[str, str] = {}
 
@@ -139,7 +146,7 @@ def _check_hsts(value: Optional[str], over_https: bool) -> Finding:
         return Finding(name, "missing", sev, SEVERITY_PENALTY[sev],
                        "No HSTS - connections can be downgraded to HTTP.")
     low = value.lower()
-    m = re.search(r"max-age\s*=\s*(\d+)", low)
+    m = re.search(r"max-age\s*=\s*(\d{1,15})", low)  # cap at 15 digits (safe int)
     max_age = int(m.group(1)) if m else 0
     weaknesses = []
     if max_age < 15552000:  # < 180 days
@@ -195,7 +202,16 @@ def score_to_grade(score: int) -> str:
 
 
 def grade_headers(raw: str) -> Report:
-    """Parse and grade a raw HTTP response / header dump."""
+    """Parse and grade a raw HTTP response / header dump.
+
+    Raises ValueError if *raw* is not a str or is empty/whitespace-only.
+    """
+    if not isinstance(raw, str):
+        raise ValueError(
+            f"grade_headers requires a str, got {type(raw).__name__}"
+        )
+    if not raw.strip():
+        raise ValueError("grade_headers requires non-empty input")
     status_line, headers = parse_headers(raw)
     over_https = True
     if status_line is None and not headers:
