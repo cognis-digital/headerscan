@@ -20,6 +20,60 @@ pip install cognis-headerscan
 headerscan scan .            # → prioritized findings in seconds
 ```
 
+
+<!-- cognis:example:start -->
+## 🔎 Example output
+
+Real, reproducible output from the tool — runs offline:
+
+```console
+$ headerscan-emit --version
+headerscan 0.1.0
+```
+
+```console
+$ headerscan-emit --help
+usage: headerscan [-h] [--version] {grade} ...
+
+Grade HTTP security headers (CSP/HSTS/XFO ...) A-F from a captured response
+dump. Defensive analysis only.
+
+positional arguments:
+  {grade}
+    grade     Grade a saved HTTP response / header dump.
+
+options:
+  -h, --help  show this help message and exit
+  --version   show program's version number and exit
+```
+
+> Blocks above are real `headerscan` output — reproduce them from a clone.
+
+**Sample result format** _(illustrative values — run on your own data for real findings):_
+
+```
+{
+"findings": [
+    {
+        "id": "123456",
+        "title": "Potential Malware Detected",
+        "description": "A suspicious executable was found on the system.",
+        "severity": "high",
+        "created": "2023-02-15T14:30:00Z"
+    },
+    {
+        "id": "789012",
+        "title": "Unusual Network Activity",
+        "description": "An unusual network connection was detected from an unknown IP address.",
+        "severity": "medium",
+        "created": "2023-02-15T14:35:00Z"
+    }
+]
+}
+```
+
+<!-- cognis:example:end -->
+
 ## Usage — step by step
 
 > Defensive analysis only.

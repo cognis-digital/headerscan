@@ -1,0 +1,14 @@
+$ headerscan-emit --help
+
+usage: headerscan [-h] [--version] {grade} ...
+
+Grade HTTP security headers (CSP/HSTS/XFO ...) A-F from a captured response
+dump. Defensive analysis only.
+
+positional arguments:
+  {grade}
+    grade     Grade a saved HTTP response / header dump.
+
+options:
+  -h, --help  show this help message and exit
+  --version   show program's version number and exit
